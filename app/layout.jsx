@@ -1,11 +1,11 @@
-import "@styles/global.css";
+import "@styles/globals.css";
 
 export const metadata = {
   title: "DevSparkShare",
   description: "Share your Spark to empower the AI Fire",
 };
 
-const RootLayout = () => {
+const RootLayout = ({children}) => {
   return (
     <html lang="en">
       <body>
