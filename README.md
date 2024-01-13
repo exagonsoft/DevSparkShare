@@ -6,8 +6,8 @@
 [![Coverage Status](https://coveralls.io/repos/github/your-username/DevSparkShare/badge.svg?branch=main)](https://coveralls.io/github/your-username/DevSparkShare?branch=main)
 [![Dependencies](https://img.shields.io/david/your-username/DevSparkShare.svg)](https://david-dm.org/your-username/DevSparkShare)
 
-<div>
-  <img src="public/assets/images/logo.png" alt="DevSparkShare" style="{{width: 60px, height: 60px}}" />
+<div style="display: flex; width: 100%; justify-content: center;">
+  <img src="public/assets/images/logo.png" alt="DevSparkShare" style="width: 200px; height: 200px; border-radius: 10%" />
 </div>
 
 ## Overview 🚀
