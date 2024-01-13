@@ -67,5 +67,3 @@ We welcome contributions! Please check out our [Contribution Guidelines](CONTRIB
 This project is licensed under the [MIT License](LICENSE).
 
 ---
-
-**Note:** Replace `your-username` and `path/to/your/logo.png` with your actual GitHub username and the path to your project logo.
