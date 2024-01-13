@@ -1,9 +1,11 @@
+import Feed from "@components/Feed";
+
 const Home = () => {
   return (
     <section className="w-full flex flex-center flex-col">
       <h1 className="head_text text-center">
         Share Your Spark
-        <br className="max-md:hidden" />
+        <br className="min-md:hidden" />
         <span className="orange_gradient text-center">
           To Light the AI Fire
         </span>
@@ -14,7 +16,7 @@ const Home = () => {
         impactful contributions. Built with Next.js and powered by web3
         technology.
       </p>
-      
+      <Feed />
     </section>
   );
 };

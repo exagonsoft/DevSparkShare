@@ -1,3 +1,4 @@
+import Nav from "@components/Nav";
 import "@styles/globals.css";
 
 export const metadata = {
@@ -5,15 +6,16 @@ export const metadata = {
   description: "Share your Spark to empower the AI Fire",
 };
 
-const RootLayout = ({children}) => {
+const RootLayout = ({ children }) => {
   return (
     <html lang="en">
       <body>
         <div className="main">
-            <div className="gradient" />
+          <div className="gradient" />
         </div>
         <main className="app">
-            {children}
+          <Nav />
+          {children}
         </main>
       </body>
     </html>
