@@ -3,6 +3,7 @@ import NextAuth from "next-auth";
 import { connectToDB } from "@utils/database";
 import User from "@models/userModel";
 import { AuthProviders } from "@constants/providers";
+import { configs } from "@constants/config";
 
 const handler = NextAuth({
   providers: AuthProviders,
@@ -10,7 +11,7 @@ const handler = NextAuth({
     strategy: "jwt",
     
   },
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: configs.NEXTAUTH_SECRET,
   pages: {
     signIn: '/authenticate',
     signOut: '/'

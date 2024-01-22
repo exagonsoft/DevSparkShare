@@ -1,3 +1,4 @@
+import { configs } from "@constants/config";
 import mongoose from "mongoose";
 let isConnected = false;
 
@@ -9,7 +10,7 @@ export const connectToDB = async () => {
     }
 
     try {
-        await mongoose.connect(process.env.MONGODB_URI, {
+        await mongoose.connect(configs.MONGODB_URI, {
             dbName: "devSparkDB",
             useNewUrlParser: true,
             useUnifiedTopology: true,

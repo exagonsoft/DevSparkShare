@@ -18,7 +18,6 @@ export const POST = async (req) => {
       tag: tag,
     });
 
-    console.log(newPrompt);
     await newPrompt.save();
 
     return NextResponse.json(JSON.stringify(newPrompt), { status: 200 });

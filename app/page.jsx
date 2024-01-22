@@ -19,8 +19,8 @@ const Home = () => {
           impactful contributions. Built with Next.js and powered by web3
           technology.
         </p>
-        <Feed />
       </section>
+      <Feed />
     </div>
   );
 };
