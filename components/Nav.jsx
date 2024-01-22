@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useState, useEffect } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
@@ -42,27 +41,23 @@ const Nav = () => {
             </button>
             <Link href="/profile" className="">
               <img
-                src="/assets/images/profile.png"
+                src={
+                  session?.user?.image
+                    ? session.user.image
+                    : "/assets/images/profile.png"
+                }
                 alt="Profile"
                 width={37}
                 height={37}
-                className="rounded-full"
+                className="rounded-full w-[37px] h-[37px] border-solid border-[1px] border-[#cdc8c8]"
               />
             </Link>
           </div>
         ) : (
           <>
-            {providers &&
-              Object.values(providers).map((provider) => (
-                <button
-                  type="button"
-                  key={provider.name}
-                  onClick={() => signIn(provider.id)}
-                  className="black_btn"
-                >
-                  Sign In
-                </button>
-              ))}
+            <Link href="/authenticate" className="black_btn">
+              Sign In
+            </Link>
           </>
         )}
       </div>
@@ -70,11 +65,15 @@ const Nav = () => {
         {session?.user ? (
           <div className="flex">
             <img
-              src="/assets/images/profile.png"
+              src={
+                session?.user?.image
+                  ? session.user.image
+                  : "/assets/images/profile.png"
+              }
               alt="Profile"
               width={37}
               height={37}
-              className="rounded-full"
+              className="rounded-full w-[37px] h-[37px] border-solid border-[1px] border-[#cdc8c8]"
               onClick={() => setToggleDropDown((prevState) => !prevState)}
             />
             {toggleDropdown && (
@@ -97,7 +96,7 @@ const Nav = () => {
                   type="button"
                   onClick={() => {
                     setToggleDropDown(false);
-                    signOut;
+                    signOut();
                   }}
                   className="black_btn mt-5 w-full"
                 >
@@ -108,17 +107,9 @@ const Nav = () => {
           </div>
         ) : (
           <>
-            {providers &&
-              Object.values(providers).map((provider) => (
-                <button
-                  type="button"
-                  key={provider.name}
-                  onClick={() => signIn(provider.id)}
-                  className="black_btn"
-                >
-                  Sign In
-                </button>
-              ))}
+            <Link href="/authenticate" className="black_btn">
+              Sign In
+            </Link>
           </>
         )}
       </div>

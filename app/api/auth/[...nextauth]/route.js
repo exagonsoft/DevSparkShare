@@ -1,45 +1,51 @@
 import NextAuth from "next-auth";
-import GoogleProvider from "next-auth/providers/google";
+
 import { connectToDB } from "@utils/database";
 import User from "@models/userModel";
+import { AuthProviders } from "@constants/providers";
 
 const handler = NextAuth({
-  providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    }),
-  ],
-  async session({ session }) {
-    const sessionUser = await User.findOne({
-        email: session.user.email
-    });
-
-    session.user.id = sessionUser._id.toString();
-    return session;
+  providers: AuthProviders,
+  session: {
+    strategy: "jwt",
+    
   },
-  async signIn({ profile }) {
-    try {
-      await connectToDB();
-
-      const existentUser = await User.findOne({
-        email: profile.email,
-      });
-
-      if (!existentUser) {
-        await User.create({
-          email: profile.email,
-          username: profile.name.replace(" ", "").toLowerCase(),
-          image: profile.picture,
-        });
-      }
-
-      return true;
-    } catch (error) {
-      console.log(error);
-      return false;
-    }
-  },
+  secret: process.env.NEXTAUTH_SECRET,
+  pages: {
+    signIn: '/authenticate',
+    signOut: '/'
+  }
 });
 
 export { handler as GET, handler as POST };
+
+// async session({ session }) {
+//   const sessionUser = await User.findOne({
+//       email: session.user.email
+//   });
+
+//   session.user.id = sessionUser._id.toString();
+//   return session;
+// },
+// async signIn({ profile }) {
+//   try {
+//     await connectToDB();
+
+//     const existentUser = await User.findOne({
+//       email: profile.email,
+//     });
+
+//     if (!existentUser) {
+//       await User.create({
+//         email: profile.email,
+//         username: profile.name.replace(" ", "").toLowerCase(),
+//         image: profile.picture,
+//       });
+//     }
+
+//     return true;
+//   } catch (error) {
+//     console.log(error);
+//     return false;
+//   }
+// },
