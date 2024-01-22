@@ -22,7 +22,8 @@ export const AuthProviders = [
           return null;
         }
 
-        return {id: user.id, email: user.email, password: user.password, image: user.picture};
+        console.log("The User: ", user);
+        return {id: user._id, email: user.email, password: user.password, image: user.picture};
       } catch (error) {
         console.log(error);
         return error;

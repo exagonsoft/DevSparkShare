@@ -6,3 +6,8 @@ export const userModel = {
   image: String(),
   picture: String(),
 };
+
+export const promptModel = {
+  prompt: String (),
+  tag: String()
+}
